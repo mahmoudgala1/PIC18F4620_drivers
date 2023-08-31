@@ -55,7 +55,7 @@
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE == INTERRUPT_FEATURE_ENABLE
 
 #define EX_RBX_HIGH_PRIORITY_SET() (INTCON2bits.RBIP=1)
-#define EX_RBX_LOW_PRIORITY_SET () (INTCON2bits.RBIP=0)
+#define EX_RBX_LOW_PRIORITY_SET() (INTCON2bits.RBIP=0)
 
 #endif
 
@@ -82,7 +82,8 @@ typedef struct {
 } interrupt_INTX_t;
 
 typedef struct {
-    void (* EXT_InterruptHandel)(void);
+    void (* EXT_InterruptHandler_High)(void);
+    void (* EXT_InterruptHandler_Low)(void);
     pin_config_t mcu_pin;
     interrupt_priority_cfg priority;
 } interrupt_RBX_t;
@@ -90,8 +91,8 @@ typedef struct {
 /* Section : Function Declaration */
 STD_ReturnType Interrupt_INTX_Init(const interrupt_INTX_t *int_obj);
 STD_ReturnType Interrupt_INTX_DeInit(const interrupt_INTX_t *int_obj);
-STD_ReturnType Interrupt_RBTX_Init(const interrupt_RBX_t *int_obj);
-STD_ReturnType Interrupt_RBTX_DeInit(const interrupt_RBX_t *int_obj);
+STD_ReturnType Interrupt_RBX_Init(const interrupt_RBX_t *int_obj);
+STD_ReturnType Interrupt_RBX_DeInit(const interrupt_RBX_t *int_obj);
 
 #endif	/* MCAL_EXTERNAL_INTERRUPT_H */
 
