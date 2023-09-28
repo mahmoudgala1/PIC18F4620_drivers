@@ -83,8 +83,18 @@ void __interrupt() InterruptManager(void) {
     } else {
         /*NoThing*/
     }
-    if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == IPR1bits.ADIP)) {
+    if ((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)) {
         ADC_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF)) {
+        TIMER0_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
+        TIMER1_ISR();
     } else {
         /*NoThing*/
     }
