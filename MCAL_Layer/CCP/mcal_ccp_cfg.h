@@ -1,0 +1,19 @@
+/* 
+ * File:   mcal_ccp1_cfg.h
+ * Author: Mahmoud Elgendy
+ *
+ * Created on October 5, 2023, 11:38 AM
+ */
+
+#ifndef MCAL_CCP1_CFG_H
+#define	MCAL_CCP1_CFG_H
+
+#define CCP_CFG_CAPTURE_MODE_SELECTED 0x00
+#define CCP_CFG_COMPARE_MODE_SELECTED 0x01
+#define CCP_CFG_PWM_MODE_SELECTED     0x02
+
+#define CCP1_CFG_SELECTED_MODE (CCP_CFG_COMPARE_MODE_SELECTED)
+#define CCP2_CFG_SELECTED_MODE (CCP_CFG_COMPARE_MODE_SELECTED)
+
+#endif	/* MCAL_CCP1_CFG_H */
+

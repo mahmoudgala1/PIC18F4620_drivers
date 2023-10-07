@@ -4,7 +4,6 @@
  *
  * Created on August 26, 2023, 5:35 PM
  */
-#include "mcal_external_interrupt.h"
 #include "mcal_interrupt_manager.h"
 volatile static uint8 RB4_Flag = 1, RB5_Flag = 1, RB6_Flag = 1, RB7_Flag = 1;
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE ==INTERRUPT_FEATURE_ENABLE
@@ -95,6 +94,26 @@ void __interrupt() InterruptManager(void) {
     }
     if ((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF)) {
         TIMER1_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF)) {
+        TIMER2_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF)) {
+        TIMER3_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == PIE1bits.CCP1IE) && (INTERRUPT_OCCUR == PIR1bits.CCP1IF)) {
+        CCP1_ISR();
+    } else {
+        /*NoThing*/
+    }
+    if ((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF)) {
+        CCP2_ISR();
     } else {
         /*NoThing*/
     }
